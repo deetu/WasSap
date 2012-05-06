@@ -1,0 +1,29 @@
+<% title "List of WasSaper" %>
+<div id="users">
+  <% @users.each do |user| %>
+<div id="user">
+      <% if user.username != current_user.username %>
+        <h4>Name: <%=h user.username %></h4>
+        <h4>Age: <%= Time.now.utc.to_date.year - user.dob.year %> years</b></h4>
+        <%= image_tag user.photo, :size=> "200x200"  %>
+        <%= button_to "Add Friend", friendships_path(:friend_id => user), :method => :post %>
+      <% end %>
+    </div>
+  <% end %>
+
+</div>
+
+<b><div class="sidebar"></b>
+
+<%= link_to image_tag("home-icon.png", :size=> "40x30", :title=>"Home"), root_path %><br /><br />
+<%= link_to image_tag("email2.png", :size=> "40x30", :title=>"Contact Us"), contactus_path %><br /><br />
+<p><%= paginate @users %></p>
+
+<b></div></b><br /><br />
+
+<h6>Search for Friends</h6>
+<form action ="users/search" method="post">
+<input name = "key" type="input" size="32"/>
+<input value="Search" type="submit"/>
+</form>
+

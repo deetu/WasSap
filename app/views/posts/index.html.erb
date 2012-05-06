@@ -1,0 +1,32 @@
+<%= render :partial => "message_form" %>
+
+<% if logged_in? %>
+<b><div class="nav"></b>
+<%= link_to "Make Friends", users_path %>
+<%= link_to "My Friends", { :controller => "users", :action => "show", :id => current_user } %>
+<%= link_to "Update Account", edit_current_user_path %>
+<b></div></b>
+<b><div class="sidebar"></b>
+<%= link_to image_tag("home-icon.png", :size=> "40x30", :title=>"Home"), root_path %><br /><br />
+<%= link_to image_tag("email2.png", :size=> "40x30", :title=>"Contact Us"), contactus_path %><br /><br />
+<%= link_to image_tag("Add_user.png", :size=> "40x30", :title=>"Add Friend"), users_path %><br /><br />
+<%= link_to image_tag("user_admin.png", :size=> "40x30", :title=>"Edit Profile"), edit_current_user_path %><br /><br />
+<%= link_to image_tag("logout.png", :size=> "40x30", :title=>"Log Out"), logout_path %><br /><br />
+<%= link_to image_tag("admin_icon.png", :size=> "50x30", :title=>"Admin Console"), admin_users_path %><br /><br />
+<b></div></b>
+<p>You have made a total of <%= pluralize(current_user.posts.count, "WaSaap") %> </p>
+<% else %>
+<b><div class="sidebar"></b>
+
+<%= link_to image_tag("login_button.png", :size=> "40x30", :title=>"Log In"), login_path %><br /><br />
+<%= link_to image_tag("email2.png", :size=> "40x30", :title=>"Contact Us"), contactus_path %><br /><br />
+<%= link_to image_tag("admin_icon.png", :size=> "50x30", :title=>"Admin Console"), admin_users_path %><br /><br />
+<b></div></b>
+<% end %>
+
+<b><div id="post"></b>
+  <%= render :partial => @posts %>
+<b></div></b>
+<p><%= paginate @posts %></p>
+
+

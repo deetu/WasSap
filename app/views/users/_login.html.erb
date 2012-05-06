@@ -1,0 +1,24 @@
+<% if logged_in? %>
+  <div class="nav5"><%= image_tag current_user.photo, :size=> "60x50"  %></div>
+  Welcome <%= current_user.username %>! Not you?
+  <%= link_to "Log out", logout_path %>
+ 
+  <% if current_user.invitation_limit > 0 %>
+     <b><div class="invi"></b>
+    <p><%= link_to 'Send Invitation', new_invitation_path %>
+    [ <%=current_user.invitation_limit %> left ]
+    </p>
+    <b></div></b>
+  <% end%>
+  
+<% else %>
+  <b><div id="nav2"></b>
+  <%= link_to "Sign up", signup_path %> 
+  <%= link_to "log in", login_path %>
+  <%= link_to "Admin!", admin_users_path %></p>
+  <%= link_to "Contact Us", contactus_path %>
+  <b></div></b>
+<% end %>
+
+
+  

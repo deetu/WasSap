@@ -1,0 +1,9 @@
+<%= div_for post do %>
+<div class="nav4"></b><b><%=post.message%>
+   </div>
+  <p>Posted by: <%=post.user.username %></p>
+  <%= image_tag post.user.photo, :size=> "50x50"  %>  
+  
+  <p>Posted <%= time_ago_in_words(post.created_at) %> ago</p>
+ 
+<% end %>

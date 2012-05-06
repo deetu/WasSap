@@ -1,0 +1,25 @@
+
+<% title "Search Results" %>
+<title>Member results</title>
+<head></head>
+<body>
+
+
+<% @users.each do |user| %>
+
+<%=user.username%><br />
+<b><div class="nav6"></b>
+<%= image_tag user.photo, :size=> "80x70"  %>
+<b></div></b>
+<% end %>
+
+<% if logged_in? %>
+<b><div class="sidebar"></b>
+<%= link_to image_tag("home-icon.png", :size=> "40x30", :title=>"Home"), root_path %><br /><br />
+<%= link_to image_tag("logout.png", :size=> "40x30", :title=>"Log Out"), logout_path %><br /><br />
+<%= link_to image_tag("admin_icon.png", :size=> "50x30", :title=>"Admin Console"), admin_users_path %><br /><br />
+
+<b></div></b>
+<% end %>
+
+</html>

@@ -1,0 +1,29 @@
+<%= form_for @user, :html =>{ :multipart => true } do |f| %>
+  <%= f.error_messages %>
+  <p>
+    <%= f.label :username %><br />
+    <%= f.text_field :username %>
+  </p>
+  <div class="field">
+    <%= f.label :dob, "Date of Birth (Must be above 18)" %>*<br />
+    <%= f.text_field :dob %>
+  </div>
+  <p>
+    <%= f.label :email, "Email Address" %><br />
+    <%= f.text_field :email %><br />
+  </p>
+  
+  <p>
+    <%= f.label :photo, "Upload a Picture" %><br />
+    <%= f.file_field :photo%><br />
+  </p>
+  <p>
+    <%= f.label :password %><br />
+    <%= f.password_field :password %>
+  </p>
+  <p>
+    <%= f.label :password_confirmation, "Confirm Password" %><br />
+    <%= f.password_field :password_confirmation %>
+  </p>
+  <p><%= f.submit (@user.new_record? ? "Sign up" : "Update") %></p>
+<% end %>
