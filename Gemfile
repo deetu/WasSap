@@ -40,3 +40,9 @@ gem "bcrypt-ruby", :require => "bcrypt"
 # gem 'ruby-debug19', :require => 'ruby-debug'
 
 gem "mocha", :group => :test
+
+group :production do
+
+  gem 'pg'
+
+end
